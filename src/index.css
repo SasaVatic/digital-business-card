@@ -4,8 +4,10 @@
   --clr-paragraph: #dcdcdc;
   --clr-icons: #918e9b;
   --clr-btn-icon: #1e1f26;
-  --clr-btn-text: #374151;
-  --clr-btn-bg: #5093e2;
+  --clr-btn-text-100: #374151;
+  --clr-btn-text-200: #ffffff;
+  --clr-btn-bg-100: #ffffff;
+  --clr-btn-bg-200: #5093e2;
   --clr-text-accent: #f3bf99;
   --clr-footer-bg: #161619;
   --clr-neutral-100: #ffffff;
@@ -19,6 +21,19 @@
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-bold: 700;
+  --btn-border: 1px solid #d1d5db;
+}
+
+body.light {
+  --clr-bg-body: #ffffff;
+  --clr-bg: #f5f5f5;
+  --clr-paragraph: #4a4e74;
+  --clr-icons: #918e9b;
+  --clr-btn-bg-200: #297fe5;
+  --clr-text-accent: #f47d27;
+  --clr-footer-bg: #d5d4d8;
+  --clr-neutral-100: #2b283a;
+  --clr-neutral-200: #2b283a;
 }
 
 @font-face {
@@ -113,6 +128,18 @@
   content: "\f092";
 }
 
+.fa-circle:before {
+  content: "\f111";
+}
+
+.fa-moon:before {
+  content: "\f186";
+}
+
+.fa-sun:before {
+  content: "\f185";
+}
+
 html,
 body {
   height: 100%;
@@ -142,6 +169,7 @@ main {
 }
 
 .card {
+  position: relative;
   max-width: 19.8125rem;
   border-radius: 0.625rem;
   overflow: hidden;
@@ -180,17 +208,23 @@ main {
 .card-link:visited,
 .card-link:link {
   display: inline-block;
-  color: var(--clr-neutral-100);
+  color: var(--clr-neutral-200);
   text-decoration: none;
   margin-block-start: 0.5506rem;
   line-height: 150%;
+}
+
+body.light .card-link:visited,
+body.light .card-link:link {
+  color: var(--clr-paragraph);
 }
 
 .card-btn-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 17px;
+  align-items: center;
+  gap: 16px;
   margin-block-start: 0.9375rem;
 }
 
@@ -205,10 +239,14 @@ main {
 }
 
 .card-btn-email {
-  color: var(--clr-btn-text);
-  background-color: var(--clr-neutral-100);
+  color: var(--clr-btn-text-100);
+  background-color: var(--clr-btn-bg-100);
   text-decoration: none;
   padding: 0.5625rem 1.7813rem;
+}
+
+body.light .card-btn-email {
+  border: var(--btn-border);
 }
 
 .card-btn-email i {
@@ -216,8 +254,8 @@ main {
 }
 
 .card-btn-linkedin {
-  color: var(--clr-neutral-100);
-  background-color: var(--clr-btn-bg);
+  color: var(--clr-btn-text-200);
+  background-color: var(--clr-btn-bg-200);
   text-decoration: none;
   padding: 0.5625rem 1.125rem;
 }
@@ -232,7 +270,7 @@ main {
 
 .card-section-heading {
   font-size: var(--fs-section-heading);
-  color: var(--clr-neutral-100);
+  color: var(--clr-neutral-200);
   margin-block-end: 0.3125rem;
 }
 
@@ -244,9 +282,11 @@ main {
 .card-footer {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
   font-size: 1.875rem;
+  line-height: 1;
   background-color: var(--clr-footer-bg);
   padding: 1.1875rem 2.1875rem 1.25rem 2.1875rem;
 }
@@ -259,4 +299,37 @@ main {
 .card-footer svg {
   width: 1.5625rem;
   fill: var(--clr-icons);
+}
+
+.theme-btn {
+  position: absolute;
+  right: 0.625rem;
+  top: 0.625rem;
+  display: inline-flex;
+  font-size: 0.9375rem;
+  border-radius: 6.25rem;
+  border: none;
+  background-color: var(--clr-bg-body);
+  color: var(--clr-text-accent);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-btn > i + i {
+  padding: .3125rem;
+}
+
+.theme-btn-circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0;
+  font-size: calc(0.9375rem + 2 * .3125rem);
+  color: var(--clr-neutral-100);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.theme-btn.light > .theme-btn-circle {
+  left: calc(100% - 1em + 1px);
 }

@@ -138,8 +138,7 @@ img {
 main {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
+  padding-block: 2.75rem;
 }
 
 .card {
@@ -147,6 +146,8 @@ main {
   border-radius: 0.625rem;
   overflow: hidden;
   background-color: var(--clr-bg);
+  align-self: flex-start;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .card-info {
@@ -186,11 +187,14 @@ main {
 }
 
 .card-btn-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 17px;
   margin-block-start: 0.9375rem;
 }
 
 .card-btn {
-  display: inline-block;
   font-size: var(--fs-btn);
   font-weight: var(--fw-medium);
   border-radius: 6px;
@@ -205,7 +209,10 @@ main {
   background-color: var(--clr-neutral-100);
   text-decoration: none;
   padding: 0.5625rem 1.7813rem;
-  margin-inline-end: 1.0625rem;
+}
+
+.card-btn-email i {
+  color: var(--clr-btn-icon);
 }
 
 .card-btn-linkedin {
@@ -235,7 +242,10 @@ main {
 }
 
 .card-footer {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   font-size: 1.875rem;
   background-color: var(--clr-footer-bg);
   padding: 1.1875rem 2.1875rem 1.25rem 2.1875rem;
@@ -244,10 +254,6 @@ main {
 .card-footer > a:visited,
 .card-footer > a:link {
   color: var(--clr-icons);
-}
-
-.card-footer > a + a {
-  margin-inline-start: 1.5rem;
 }
 
 .card-footer svg {
